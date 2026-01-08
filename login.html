@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilih Login - CompLearn</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-container h1 {
+            font-size: 32px;
+            margin: 10px 0 0 0;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .logo {
+            width: 120px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .container p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+
+        .btn-siswa {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+        }
+
+        .btn-siswa:hover {
+            background: linear-gradient(45deg, #45a049, #4CAF50);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        .btn-admin {
+            background: linear-gradient(45deg, #2196F3, #1976D2);
+        }
+
+        .btn-admin:hover {
+            background: linear-gradient(45deg, #1976D2, #2196F3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
+        }
+
+        .register-links {
+            margin-top: 30px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .register-links h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .register-links .btn {
+            width: 48%;
+            display: inline-block;
+            margin: 5px 1%;
+        }
+
+        .register-links .btn-register-siswa {
+            background: linear-gradient(45deg, #FF9800, #F57C00);
+        }
+
+        .register-links .btn-register-siswa:hover {
+            background: linear-gradient(45deg, #F57C00, #FF9800);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        .register-links .btn-register-admin {
+            background: linear-gradient(45deg, #9C27B0, #7B1FA2);
+        }
+
+        .register-links .btn-register-admin:hover {
+            background: linear-gradient(45deg, #7B1FA2, #9C27B0);
+            box-shadow: 0 5px 15px rgba(156, 39, 176, 0.4);
+        }
+
+        .back-link {
+            margin-top: 20px;
+            display: block;
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="husodo logo.png" alt="CompLearn Logo" class="logo">
+            <h1>CompLearn</h1>
+        </div>
+        <p>Pilih jenis login Anda</p>
+
+        <a href="login_siswa.html" class="btn btn-siswa">Login sebagai Siswa</a>
+        <a href="admin_login.html" class="btn btn-admin">Login sebagai Admin</a>
+
+        <div class="register-links">
+            <h3>Belum punya akun?</h3>
+            <a href="register.html" class="btn btn-register-siswa">Daftar sebagai Siswa</a>
+            <a href="#" onclick="alert('Pendaftaran admin dilakukan oleh administrator. Hubungi admin untuk membuat akun.')" class="btn btn-register-admin">Daftar sebagai Admin</a>
+        </div>
+
+        <a href="index.html" class="back-link">← Kembali ke Beranda</a>
+    </div>
+</body>
+</html>

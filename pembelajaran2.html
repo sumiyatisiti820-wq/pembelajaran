@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>CompLearn - Interaksi Perangkat Keras, Lunak dan Pengguna</title>
+
+<style>
+/* ================= RESET ================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+body{
+    background:#f4f6fb;
+}
+
+/* ================= HEADER ================= */
+.header{
+    background:#3f5bd8;
+    padding:26px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:#fff;
+}
+
+.header-left{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+/* LOGO GAMBAR SAJA (TANPA BULAT) */
+.logo img{
+    height:52px;          /* atur tinggi logo */
+    width:auto;           /* lebar menyesuaikan */
+    display:block;
+}
+
+.header h1{
+    font-size:24px;
+    font-weight:600;
+}
+
+.home-icon{
+    font-size:34px;
+    cursor:pointer;
+}
+
+/* ================= CONTAINER ================= */
+.container{
+    max-width:900px;
+    margin:35px auto;
+    background:#fff;
+    padding:34px;
+    border-radius:18px;
+    box-shadow:0 4px 14px rgba(0,0,0,.08);
+}
+
+/* ================= JUDUL ================= */
+.title{
+    text-align:center;
+    font-size:22px;
+    font-weight:600;
+    margin-bottom:32px;
+}
+
+/* ================= CARD MATERI ================= */
+.card{
+    max-width:480px;
+    margin:0 auto 34px;
+    padding:22px 28px;
+    background:#eef2ff;
+    border-radius:16px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+}
+
+.card img{
+    width:62px;
+}
+
+.card h3{
+    font-size:18px;
+    font-weight:600;
+    line-height:1.4;
+
+    max-width:400px;   /* lebih lebar → geser halus */
+    margin:0 auto;
+    text-align:center;
+}
+
+
+/* ================= INDIKATOR ================= */
+.indikator{
+    margin-bottom:34px;
+}
+
+.indikator h4{
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+.indikator p{
+    margin-bottom:8px;
+}
+
+.indikator ol{
+    margin-left:22px;
+    line-height:1.7;
+}
+
+/* ================= GAMBAR AKHIR ================= */
+.image-section{
+    display:flex;
+    justify-content:center;
+    margin-top:30px;
+}
+
+.image-section img{
+    width:400px;
+    max-width:100%;
+    object-fit:contain;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:600px){
+    .header{
+        padding:18px 22px;
+    }
+
+    .logo img{
+        height:44px;
+    }
+
+    .header h1{
+        font-size:20px;
+    }
+
+    .home-icon{
+        font-size:28px;
+    }
+
+    .container{
+        margin:20px;
+        padding:24px;
+    }
+
+    .card{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .image-section img{
+        width:280px;
+    }
+}
+
+/* ================= MATERI TEKS ================= */
+.materi {
+    margin-top: 40px;
+}
+
+.materi h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.materi p {
+    line-height: 1.7;
+    margin-bottom: 12px;
+    text-align: justify;
+}
+
+/* ================= SUB BAGIAN ================= */
+.sub-materi {
+    margin-top: 25px;
+}
+
+.sub-materi h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* ================= GRID GAMBAR ================= */
+.grid-gambar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 15px;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.grid-gambar img {
+    width: 100%;
+    max-height: 90px;
+    object-fit: contain;
+}
+
+.grid-gambar span {
+    font-size: 13px;
+    display: block;
+    margin-top: 5px;
+}
+
+.content {
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.content h3 {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.content h4 {
+    margin-top: 15px;
+    font-size: 15px;
+}
+
+.single-image {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.single-image img {
+    width: 90%;
+    max-width: 350px;
+}
+
+.single-image span {
+    display: block;
+    font-size: 12px;
+    color: #555;
+    margin-top: 5px;
+}
+
+.video-section, .quiz-section {
+    text-align: center;
+}
+
+.video-box, .quiz-box {
+    margin: 15px auto;
+    width: 90%;
+    max-width: 320px;
+    height: 160px;
+    background: #3f5bd8;
+    color: #fff;
+    font-size: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    width: 100%;
+    background-color: #3f5bd8; /* samakan dengan header */
+    padding: 40px 0;
+}
+
+/* isi footer tetap rapi di tengah */
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-inner b {
+    font-size: 16px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<div class="header">
+    <div class="header-left">
+        <div class="logo">
+            <img src="husodo logo.png" alt="Logo">
+        </div>
+    </div>
+    <a href="kelas 12.html" class="home-icon">🏠</a>
+</div>
+
+<!-- ================= KONTEN ================= -->
+<div class="container">
+
+    <div class="title">Materi Pembelajaran Kelas 12</div>
+
+    <!-- CARD MATERI -->
+    <div class="card">
+        <img src="foto 10.png" alt="Komputer">
+        <h3>Pembelajaran 2 – Interaksi Perangkat Keras, Lunak dan Pengguna</h3>
+    </div>
+
+    <!-- INDIKATOR -->
+    <div class="indikator">
+        <h4>Indikator Pembelajaran</h4>
+        <p>Peserta didik mampu:</p>
+        <ol>
+            <li>Menjelaskan hubungan antara perangkat keras, perangkat lunak, dan pengguna.</li>
+            <li>Menjelaskan peran sistem operasi sebagai penghubung hardware, software, dan brainware.</li>
+            <li>Mengidentifikasi contoh interaksi ketiga komponen sistem komputer dalam kehidupan sehari-hari.</li>
+            <li>Mengklasifikasikan perangkat komputer ke dalam hardware, software, dan brainware.</li>
+        </ol>
+    </div>
+
+    <!-- GAMBAR AKHIR -->
+    <div class="image-section">
+        <img src="foto 18.png" alt="Ilustrasi Sistem Komputer">
+    </div>
+
+    <!-- PENGERTIAN PERANGKAT KOMPUTER -->
+<section class="content">
+    <h3>Pengertian Perangkat Komputer</h3>
+    <p> Perangkat komputer adalah semua komponen fisik (hardware) dan nonfisik (software) yang bekerja 
+        sama untuk menjalankan perintah dari pengguna, sehingga komputer dapat melaksanakan tugas-tugas
+        tertentu. Komputer tidak berdiri sendiri, melainkan bekerja sebagai sebuah sistem.
+    </p>
+</section>
+
+<!-- KLASIFIKASI PERANGKAT KOMPUTER -->
+<section class="content">
+    <h3>Klasifikasi Perangkat Komputer</h3>
+    <p> Sistem komputer terdiri dari tiga komponen utama, yaitu :
+    </p>
+
+    <div class="single-image">
+        <img src="foto 19.png" alt="Perangkat Input">
+    </div>
+
+    <p>
+        Ketiga komponen ini saling berhubungan dan saling bergantung. 
+       Jika salah satu tidak ada, sistem komputer tidak dapat berfungsi dengan baik.
+    </p>
+    
+<!-- PERANGKAT KERAS (HARDWARE) -->
+<section class="content">
+    <h3> Perangkat Keras (Hardware)</h3>
+    <p> Perangkat keras adalah bagian fisik komputer yang dapat dilihat dan disentuh secara langsung, serta berfungsi untuk menjalankan perintah dari perangkat lunak.
+    <p> Contoh dan kegunaan hardware :
+    </p>
+
+    <div class="single-image">
+        <img src="foto 20.png" alt="Perangkat Keras">
+    </div>
+
+    <p>
+        Hardware diibaratkan seperti tubuh manusia yang menjalankan aktivitas.
+    </p>
+</section>
+
+<!-- PERANGKAT LUNAK (SOFTWARE) -->
+<section class="content">
+    <h3> Perangkat Lunak (Software)</h3>
+    <p> Perangkat lunak adalah program atau aplikasi yang berisi instruksi agar komputer dapat menjalankan tugas tertentu.
+    </p>
+
+    <div class="single-image">
+        <img src="foto 21.png" alt="Perangkat Lunak">
+    </div>
+</section>
+
+
+<!-- PERANGKAT PENGGUNA (BRAINWARE) -->
+<section class="content">
+    <h3>Perangkat Pengguna (Brainware)</h3>
+    <p> Brainware adalah manusia yang mengoperasikan, mengendalikan, dan memanfaatkan komputer. Brainware merupakan komponen paling penting karena manusia yang menentukan apa yang harus dilakukan oleh komputer.
+    <p> Jenis-jenis brainware :
+    </p>
+
+    <div class="single-image">
+        <img src="foto 22.png" alt="Perangkat Pengguna">
+    </div>
+</section>
+
+<!-- INTERAKSI ANTARA HARDWARE, SOFTWARE, DAN BRAINWARE -->
+<section class="content">
+    <h3>Interaksi Antara Hardware, Software, dan Brainware</h3>
+    <p> Interaksi ketiga komponen dapat dijelaskan sebagai berikut :
+    </p>
+
+    <div class="single-image">
+        <img src="foto 23.png" alt="Interaksi">
+    </div>
+
+     <p> Contoh :
+     <p> Seorang siswa (brainware) mengetik tugas menggunakan Microsoft Word (software) melalui keyboard dan menampilkan hasil di monitor (hardware).
+    </p> 
+</section>
+
+<!-- RANGKUMAN MATERI -->
+<section class="content">
+    <h3>Rangkuman Materi</h3>
+    <p>·       Sistem komputer terdiri dari hardware, software, dan brainware.
+    <p>·       Hardware adalah perangkat fisik komputer.
+    <p>·       Software adalah program yang mengatur dan menjalankan perintah.
+    <p>·       Brainware adalah manusia yang mengoperasikan komputer.
+    <p>·       Sistem operasi berperan sebagai penghubung antara hardware, software, dan brainware.
+    <p>·       Ketiga komponen tersebut harus bekerja bersama agar komputer dapat berfungsi dengan baik.
+</section>
+
+
+<!-- VIDEO -->
+<section class="content video-section">
+    <h3>Video Pembelajaran</h3>
+
+    <a href="https://app.lumi.education/run/84kq8s" target="_blank">
+                <div class="video-box">▶</div>
+    </a>
+</section>
+
+<!-- QUIZ -->
+<section class="content quiz-section">
+    <h3>Quiz</h3>
+
+    <a href="https://app.lumi.education/run/zGbiPF" target="_blank">
+        <div class="quiz-box">?</div>
+    </a>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+    <div class="footer-inner">
+        CompLearn<br>
+        Platform pembelajaran online<br>
+        SMK Bhakti Adi Husodo
+        <br><br>
+        © Mahasiswi Pendidikan Teknologi Informasi IPI Garut<br>
+        <b>Siti Sumiyati</b>, <b>Wifa Siti Hadiani</b>
+    </div>
+</div>
+
+</body>
+</html>

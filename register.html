@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrasi - CompLearn</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #2957D1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            padding: 40px 35px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #111;
+            text-align: center;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .input-box {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .input-box input {
+            width: 100%;
+            border: none;
+            border-bottom: 2px solid #ddd;
+            padding: 10px 0;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-box input:focus {
+            border-bottom-color: #2957D1;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #2957D1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #1d3fa3;
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .link a {
+            color: #2957D1;
+            text-decoration: none;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Daftar Akun</h2>
+        <p>Buat akun CompLearn Anda</p>
+
+        <form onsubmit="alert('Registrasi tidak tersedia di versi statis. Gunakan hosting PHP untuk fungsi penuh.'); return false;">
+            <div class="input-box">
+                <input type="text" name="nim" placeholder="NIM" required>
+            </div>
+            <div class="input-box">
+                <input type="text" name="nama_lengkap" placeholder="Nama Lengkap" required>
+            </div>
+            <div class="input-box">
+                <input type="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+            <div class="input-box">
+                <input type="text" name="kelas" placeholder="Kelas (contoh: 12-A)" required>
+            </div>
+            <button type="submit">Daftar</button>
+        </form>
+
+        <div class="link">
+            Sudah punya akun? <a href="login.html">Login di sini</a>
+        </div>
+    </div>
+</body>
+</html>

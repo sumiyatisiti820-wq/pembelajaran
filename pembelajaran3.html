@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>CompLearn - Interaksi Perangkat Keras, Lunak dan Pengguna</title>
+
+<style>
+/* ================= RESET ================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+body{
+    background:#f4f6fb;
+}
+
+/* ================= HEADER ================= */
+.header{
+    background:#3f5bd8;
+    padding:26px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:#fff;
+}
+
+.header-left{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+/* LOGO GAMBAR SAJA (TANPA BULAT) */
+.logo img{
+    height:52px;          /* atur tinggi logo */
+    width:auto;           /* lebar menyesuaikan */
+    display:block;
+}
+
+.header h1{
+    font-size:24px;
+    font-weight:600;
+}
+
+.home-icon{
+    font-size:34px;
+    cursor:pointer;
+}
+
+/* ================= CONTAINER ================= */
+.container{
+    max-width:900px;
+    margin:35px auto;
+    background:#fff;
+    padding:34px;
+    border-radius:18px;
+    box-shadow:0 4px 14px rgba(0,0,0,.08);
+}
+
+/* ================= JUDUL ================= */
+.title{
+    text-align:center;
+    font-size:22px;
+    font-weight:600;
+    margin-bottom:32px;
+}
+
+/* ================= CARD MATERI ================= */
+.card{
+    max-width:480px;
+    margin:0 auto 34px;
+    padding:22px 28px;
+    background:#eef2ff;
+    border-radius:16px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    text-align:center;
+}
+.card h3{
+    font-size:18px;
+    font-weight:600;
+    line-height:1.4;
+}
+
+
+.card h3{
+    font-size:18px;
+    font-weight:600;
+    line-height:1.4;
+}
+
+.card img{
+    width:62px;
+}
+
+.card h3{
+    font-size:18px;
+    font-weight:600;
+}
+
+
+/* ================= INDIKATOR ================= */
+.indikator{
+    margin-bottom:34px;
+}
+
+.indikator h4{
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+.indikator p{
+    margin-bottom:8px;
+}
+
+.indikator ol{
+    margin-left:22px;
+    line-height:1.7;
+}
+
+/* ================= GAMBAR AKHIR ================= */
+.image-section{
+    display:flex;
+    justify-content:center;
+    margin-top:30px;
+}
+
+.image-section img{
+    width:400px;
+    max-width:100%;
+    object-fit:contain;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:600px){
+    .header{
+        padding:18px 22px;
+    }
+
+    .logo img{
+        height:44px;
+    }
+
+    .header h1{
+        font-size:20px;
+    }
+
+    .home-icon{
+        font-size:28px;
+    }
+
+    .container{
+        margin:20px;
+        padding:24px;
+    }
+
+    .card{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .image-section img{
+        width:280px;
+    }
+}
+
+/* ================= MATERI TEKS ================= */
+.materi {
+    margin-top: 40px;
+}
+
+.materi h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.materi p {
+    line-height: 1.7;
+    margin-bottom: 12px;
+    text-align: justify;
+}
+
+/* ================= SUB BAGIAN ================= */
+.sub-materi {
+    margin-top: 25px;
+}
+
+.sub-materi h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* ================= GRID GAMBAR ================= */
+.grid-gambar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 15px;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.grid-gambar img {
+    width: 100%;
+    max-height: 90px;
+    object-fit: contain;
+}
+
+.grid-gambar span {
+    font-size: 13px;
+    display: block;
+    margin-top: 5px;
+}
+
+.content {
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.content h3 {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.content h4 {
+    margin-top: 15px;
+    font-size: 15px;
+}
+
+.single-image {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.single-image img {
+    width: 90%;
+    max-width: 350px;
+}
+
+.single-image span {
+    display: block;
+    font-size: 12px;
+    color: #555;
+    margin-top: 5px;
+}
+
+.video-section, .quiz-section {
+    text-align: center;
+}
+
+.video-box, .quiz-box {
+    margin: 15px auto;
+    width: 90%;
+    max-width: 320px;
+    height: 160px;
+    background: #3f5bd8;
+    color: #fff;
+    font-size: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    width: 100%;
+    background-color: #3f5bd8; /* samakan dengan header */
+    padding: 40px 0;
+}
+
+/* isi footer tetap rapi di tengah */
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-inner b {
+    font-size: 16px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<div class="header">
+    <div class="header-left">
+        <div class="logo">
+            <img src="husodo logo.png" alt="Logo">
+        </div>
+    </div>
+    <a href="kelas 12.html" class="home-icon">🏠</a>
+</div>
+
+<!-- ================= KONTEN ================= -->
+<div class="container">
+
+    <div class="title">Materi Pembelajaran Kelas 12</div>
+
+    <!-- CARD MATERI -->
+    <div class="card">
+        <img src="foto 11.png" alt="OS">
+        <h3>Pembelajaran 3 - Driver dan Sistem Operasi </h3>
+    </div>
+
+    <!-- INDIKATOR -->
+    <div class="indikator">
+        <h4>Indikator Pembelajaran</h4>
+        <p>Peserta didik mampu:</p>
+        <ol>
+            <li>Menjelaskan pengertian sistem operasi dan driver.</li>
+            <li>Menyebutkan fungsi utama sistem operasi dan driver.</li>
+            <li>Mengidentifikasi contoh sistem operasi dan driver.</li>
+            <li>Menjelaskan langkah dasar instalasi sistem operasi.</li>
+            <li>Menjelaskan langkah dasar instalasi driver.</li>
+            <li>Menjelaskan pentingnya update sistem operasi dan driver.</li>
+        </ol>
+    </div>
+
+    <!-- GAMBAR AKHIR -->
+    <div class="image-section">
+        <img src="foto 24.png" alt="Ilustrasi Sistem Operasi dan Driver">
+    </div>
+
+    <!-- PENGERTIAN SISTEM OPERASI -->
+<section class="content">
+    <h3>Pengertian Sistem Komputer</h3>
+    <p>     Sistem operasi (Operating System/OS) adalah perangkat lunak utama yang mengatur seluruh aktivitas komputer, mulai dari menjalankan aplikasi hingga mengelola perangkat keras.
+Sistem operasi diibaratkan sebagai otak dalam tubuh manusia yang mengatur dan mengendalikan semua aktivitas komputer.
+    </p>
+</section>
+
+    <!-- TANPA SISTEM KOMPUTER -->
+<section class="content">
+    <h3>Tanpa Sistem Komputer</h3>
+    <p> Tanpa adanya sistem operasi :
+    <p> ·       Komputer tidak dapat menampilkan desktop
+    <p> ·       Aplikasi tidak bisa dijalankan
+    <p> ·       Data tidak bisa disimpan
+    <p> ·       Komputer tidak bisa berkomunikasi dengan perangkat keras
+    <p> Contoh sistem operasi : 
+    </p>
+
+    <div class="single-image">
+        <img src="foto 17.png" alt="Sistem Komputer">
+    </div>
+    
+    <!-- DRIVER -->
+<section class="content">
+    <h3> Driver </h3>
+    <p> Driver adalah program kecil yang berfungsi menghubungkan sistem operasi dengan perangkat keras, agar perangkat dapat bekerja dengan baik.
+    <p> Driver diibaratkan sebagai saraf yang menyampaikan perintah dari otak (OS) ke seluruh bagian tubuh (hardware).
+    <p> Tanpa driver : 
+    <p> ·       Printer tidak bisa mencetak
+    <p> ·       Speaker tidak mengeluarkan suara
+    <p> ·       Wi-Fi tidak bisa tersambung
+    <p> ·       Layar tidak menampilkan grafik dengan baik
+    <p> Contoh driver : 
+    </p>
+
+    <div class="single-image">
+        <img src="foto 25.png" alt="Contoh Driver">
+    </div>
+</section>
+
+    <!-- FUNGSI SISTEM OPERASI DAN DRIVER -->
+<section class="content">
+    <h3> Fungsi Sistem Operasi dan Driver</h3>
+    <p> Fungsi sistem operasi :
+    <p> ·       Mengatur kerja perangkat keras dan perangkat lunak
+    <p> ·       Mengelola file dan proses program
+    <p> ·       Menyediakan antarmuka pengguna (GUI)
+    <p> ·       Menjaga keamanan dan stabilitas sistem
+    <p> Fungsi driver : 
+    <p> ·       Menghubungkan OS dengan perangkat keras
+    <p> ·       Mengontrol agar perangkat bekerja dengan baik
+    <p> ·       Menjaga kompatibilitas dan meningkatkan performa            
+    </p>
+</section>
+    
+    <!-- INSTALASI SISTEM OPERASI -->
+<section class="content">
+    <h3> Instalasi Sistem Operasi</h3>
+    <p> Langkah dasar instalasi sistem operasi :
+    <p> 1.     Menyiapkan media instalasi (flashdisk/CD bootable)
+    <p> 2.     Masuk ke BIOS dan mengatur urutan boot
+    <p> 3.     Memilih partisi dan memulai instalasi
+    <p> 4.     Mengatur akun pengguna dan pengaturan awal
+    </p>
+
+    <div class="single-image">
+        <img src="foto 26.jpg" alt="Instalasi OS">
+    </div>
+
+    <p> Setelah OS terpasang, komputer sudah bisa digunakan, namun belum optimal tanpa driver.</p>
+</section>
+
+ <!-- INSTALASI DRIVER -->
+<section class="content">
+    <h3> Instalasi Driver</h3>
+    <p> Cara instalasi driver :
+    <p> 1.     Menggunakan CD/flashdisk bawaan perangkat
+    <p> 2.     Mengunduh driver dari situs resmi produsen
+    <p> 3.     Menjalankan installer dan melakukan restart komputer
+    </p>
+
+    <div class="single-image">
+        <img src="foto 27.jpg" alt="Instalasi Driver">
+    </div>
+</section>
+
+    <!-- UPDATE SISTEM OPERASI DAN DRIVER -->
+<section class="content">
+    <h3> Update Sistem Operasi dan Driver</h3>
+    <p> Update driver dilakukan untuk :
+    <p> ·       Memperbaiki bug
+    <p> ·       Meningkatkan performa hardware
+    <p> ·       Menambah kompatibilitas dengan OS terbaru
+    <p> Update sistem operasi dilakukan untuk : 
+    <p> ·       Menambah fitur baru
+    <p> ·       Memperbaiki sistem
+    <p> ·       Meningkatkan keamanan 
+    <p> ·       Menjaga stabilitas komputer          
+    </p>
+</section>
+
+<!-- RANGKUMAN MATERI -->
+<section class="content">
+    <h3>Rangkuman Materi</h3>
+    <p>·       Sistem operasi adalah perangkat lunak utama yang mengatur seluruh aktivitas komputer.
+    <p>·       Driver berfungsi sebagai penghubung antara sistem operasi dan perangkat keras.
+    <p>·       Tanpa OS dan driver, komputer tidak dapat bekerja dengan baik.
+    <p>·       Instalasi OS dan driver diperlukan agar komputer dapat digunakan secara optimal.
+    <p>·       Update OS dan driver penting untuk keamanan, performa, dan stabilitas sistem.
+</section>
+
+
+<!-- VIDEO -->
+<section class="content video-section">
+    <h3>Video Pembelajaran</h3>
+
+    <a href="https://app.lumi.education/run/MIKKme" target="_blank">
+        <div class="video-box">▶</div>
+    </a>
+</section>
+
+
+<!-- QUIZ -->
+<section class="content quiz-section">
+    <h3>Quiz</h3>
+
+    <a href="https://app.lumi.education/run/efWwHf" target="_blank">
+        <div class="quiz-box">?</div>
+    </a>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+    <div class="footer-inner">
+        CompLearn<br>
+        Platform pembelajaran online<br>
+        SMK Bhakti Adi Husodo
+        <br><br>
+        © Mahasiswi Pendidikan Teknologi Informasi IPI Garut<br>
+        <b>Siti Sumiyati</b>, <b>Wifa Siti Hadiani</b>
+    </div>
+</div>
+
+</body>
+</html>

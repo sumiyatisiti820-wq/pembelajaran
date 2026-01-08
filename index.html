@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="0; url=login.html" />
+    <title>Redirecting...</title>
+</head>
+<body>
+    <p>Jika tidak redirect otomatis, <a href="login.html">klik di sini</a>.</p>
+</body>
+</html>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', Helvetica;
+        }
+
+        body {
+            background: #2957D1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* HEADER WRAPPER */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .logo {
+            width: 70px;
+        }
+
+        .title-box {
+            text-align: left;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .title-box h1 {
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            margin-top: 2px;
+        }
+
+        .school-name {
+            margin-top: 10px;
+            font-size: 26px;
+            font-weight: 600;
+            color: white;
+        }
+
+        /* CARD FORM */
+        .card {
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            color: black;
+            padding: 25px 30px;
+            border-radius: 12px;
+            margin: 25px auto 0 auto;
+            box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        /* TABS */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #E5E5E5;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: #999;
+            border-bottom: 3px solid transparent;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active {
+            color: #2957D1;
+            border-bottom-color: #2957D1;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .input-box {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .input-box label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid #E5E5E5;
+            background: #F1F3F7;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .input-box input:focus {
+            border-color: #2957D1;
+            background: white;
+        }
+
+        .btn {
+            width: 100%;
+            display: block;
+            padding: 10px;
+            background: #2957D1;
+            color: white;
+            font-size: 15px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 5px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .text-small {
+            font-size: 13px;
+            margin-top: 12px;
+        }
+
+        .text-small a {
+            color: #2957D1;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .alert {
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- LOGO + TEXT SIDE BY SIDE -->
+        <div class="header">
+            <img src="husodo logo.png" class="logo" alt="Logo sekolah">
+            <div class="title-box">
+                <p class="subtitle">Platform Pembelajaran Online</p>
+            </div>
+        </div>
+
+        <p class="school-name">SMK BHAKTI ADI HUSODO</p>
+
+        <!-- CARD FORM -->
+        <div class="card">
+            <h2>Platform Pembelajaran Komprehensif</h2>
+            
+            <!-- TABS -->
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('login')">Masuk</button>
+                <button class="tab-btn" onclick="switchTab('register')">Daftar</button>
+            </div>
+
+            <!-- LOGIN TAB -->
+            <div id="login" class="tab-content active">
+                <form method="POST" action="process_login.php">
+                    <div class="input-box">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="Contoh: siswa@sekolah.com" required>
+                    </div>
+                    <div class="input-box">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="Masukkan password Anda" required>
+                    </div>
+                    <button type="submit" class="btn">Masuk</button>
+                </form>
+            </div>
+
+            <!-- REGISTER TAB -->
+            <div id="register" class="tab-content">
+                <form method="POST" action="register.php">
+                    <div class="input-box">
+                        <label>NIM / No. Induk</label>
+                        <input type="text" name="nim" placeholder="Contoh: 12001" required>
+                    </div>
+                    <div class="input-box">
+                        <label>Nama Lengkap</label>
+                        <input type="text" name="nama_lengkap" placeholder="Masukkan nama lengkap" required>
+                    </div>
+                    <div class="input-box">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="Contoh: siswa@sekolah.com" required>
+                    </div>
+                    <div class="input-box">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="Minimal 6 karakter" required minlength="6">
+                    </div>
+                    <div class="input-box">
+                        <label>Kelas</label>
+                        <input type="text" name="kelas" placeholder="Contoh: 12-A" required>
+                    </div>
+                    <div class="input-box">
+                        <label>Nomor HP (Opsional)</label>
+                        <input type="tel" name="nomor_hp" placeholder="Nomor HP Anda" >
+                    </div>
+                    <button type="submit" class="btn">Daftar Sekarang</button>
+                </form>
+            </div>
+
+            <script>
+                function switchTab(tabName) {
+                    // Hide all tab contents
+                    document.getElementById('login').classList.remove('active');
+                    document.getElementById('register').classList.remove('active');
+                    
+                    // Remove active class from all buttons
+                    document.querySelectorAll('.tab-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Show selected tab
+                    document.getElementById(tabName).classList.add('active');
+                    
+                    // Add active class to clicked button
+                    event.target.classList.add('active');
+                }
+            </script>
+        </div>
+
+    </div>
+
+</body>
+</html>

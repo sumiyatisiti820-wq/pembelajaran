@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Pembelajaran | CompLearn</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f6f7fb;
+        }
+
+        /* HEADER */
+        .header {
+            background: #3f5bd8;
+            padding: 22px 35px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* PENTING */
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .header img {
+            width: 42px;
+        }
+
+        .header h1 {
+            color: #fff;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        /* TOMBOL KEMBALI */
+        .btn-kembali {
+            background: #ffffff;
+            color: #333;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-kembali:hover {
+            background: #eaeaea;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 1050px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 45px;
+        }
+
+        /* CARD MATERI */
+        .materi-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 30px 35px;
+            min-height: 110px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 28px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.10);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .materi-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+        }
+
+        .materi-icon {
+            width: 75px;
+        }
+
+        .materi-text {
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .materi-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-left">
+            <img src="husodo logo.png" alt="Logo CompLearn">
+        </div>
+
+        <a href="dashboard.php" class="btn-kembali">Kembali</a>
+    </div>
+
+  <!-- CONTENT -->
+<div class="container">
+    <div class="title">Materi Pembelajaran Informatika Kelas 12</div>
+
+    <!-- PEMBELAJARAN 1 -->
+    <a href="pembelajaran1.html" class="materi-link">
+        <div class="materi-card">
+            <img src="foto 9.png" class="materi-icon">
+            <div class="materi-text">
+                Pembelajaran 1 - Sistem Komputer
+            </div>
+        </div>
+    </a>
+
+    <!-- PEMBELAJARAN 2 -->
+    <a href="pembelajaran2.html" class="materi-link">
+        <div class="materi-card">
+            <img src="foto 10.png" class="materi-icon">
+            <div class="materi-text">
+                Pembelajaran 2 - Interaksi Perangkat Keras, Perangkat Lunak dan Pengguna
+            </div>
+        </div>
+    </a>
+
+    <!-- PEMBELAJARAN 3 -->
+    <a href="pembelajaran3.html" class="materi-link">
+        <div class="materi-card">
+            <img src="foto 11.png" class="materi-icon">
+            <div class="materi-text">
+                Pembelajaran 3 - Driver dan Sistem Operasi
+            </div>
+        </div>
+    </a>
+</div>
+
+
+</body>
+</html>
